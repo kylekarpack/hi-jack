@@ -78,7 +78,7 @@ export default function FileUploadForm() {
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto mt-20">
+    <Card className="w-full max-w-2xl mx-auto mt-20">
       <CardHeader>
         <CardTitle>Hi Jack, Here's Your API</CardTitle>
         <CardDescription>
@@ -136,8 +136,10 @@ export default function FileUploadForm() {
                   {JSON.stringify(response, null, 2)}
                 </pre>
               </div>
-              You're going to have to do the work to actually find interesting
-              insights from the document!
+              <div className="mt-4">
+                You're going to have to do the work to actually find interesting
+                insights from the document!
+              </div>
             </div>
           )}
         </CardContent>
