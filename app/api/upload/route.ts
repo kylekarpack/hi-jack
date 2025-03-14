@@ -1,13 +1,13 @@
-import { type NextRequest, NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
     // Get the form data from the request
-    const formData = await request.formData()
-    const file = formData.get("file") as File
+    const formData = await request.formData();
+    const file = formData.get("file") as File;
 
     if (!file) {
-      return NextResponse.json({ error: "No file provided" }, { status: 400 })
+      return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
     // Get file details
@@ -16,20 +16,21 @@ export async function POST(request: NextRequest) {
       type: file.type,
       size: file.size,
       lastModified: new Date(file.lastModified).toISOString(),
-    }
+    };
 
-    // In a real application, you would process the file here
-    // For example, upload to S3, process with a third-party API, etc.
+    // You're going to need to do something interesting here, Jack!
 
     // For demonstration purposes, we'll just return the file details
     return NextResponse.json({
       message: "File received successfully",
       file: fileDetails,
       timestamp: new Date().toISOString(),
-    })
+    });
   } catch (error) {
-    console.error("Error processing file upload:", error)
-    return NextResponse.json({ error: "Failed to process file upload" }, { status: 500 })
+    console.error("Error processing file upload:", error);
+    return NextResponse.json(
+      { error: "Failed to process file upload" },
+      { status: 500 }
+    );
   }
 }
-
